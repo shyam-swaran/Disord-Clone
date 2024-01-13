@@ -1,12 +1,21 @@
-import { ModeToggle } from '@/components/ModeToggle'
-import { UserButton } from '@clerk/nextjs'
+import { InitialModal } from '@/components/modals/initial-modal'
+import { db } from '@/lib/db'
+import { initialProfile } from '@/lib/initial-profile'
+import { redirect } from 'next/navigation'
 
-export default function Home() {
-    return (
-        <main className="m-2 p-2 pt-2 text-center ">
-            <h1>My App</h1>
-            <UserButton />
-            <ModeToggle />
-        </main>
-    )
+export default async function SetupPage() {
+    const profile = await initialProfile()
+    const server = await db.server.findFirst({
+        where: {
+            members: {
+                some: {
+                    profileId: profile.id,
+                },
+            },
+        },
+    })
+    if (server) {
+        return redirect(`/servers/${server.id}`)
+    }
+    return <InitialModal />
 }
