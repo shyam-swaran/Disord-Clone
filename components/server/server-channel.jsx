@@ -20,9 +20,17 @@ export const ServerChannel = ({ channel, server, role }) => {
 
     const Icon = iconMap[channel.type];
 
+    const onClick = () => {
+        router.push(`/servers/${params?.serverId}/channels/${channel.id}`);
+    };
+    const onAction = (e, action) => {
+        e.stopPropagation();
+        onOpen(action, { channel, server });
+    };
+
     return (
         <button
-            onClick={() => {}}
+            onClick={onClick}
             className={cn(
                 "transistion group mb-1  flex w-full items-center gap-x-2 rounded-md px-2 py-2 hover:bg-zinc-700/10 dark:hover:bg-zinc-700/50",
                 params?.channelId === channel.id &&
@@ -41,17 +49,13 @@ export const ServerChannel = ({ channel, server, role }) => {
                 <div className="ml-auto flex items-center gap-x-2">
                     <ActionTooltip label={"Edit"}>
                         <Edit
-                            onClick={() =>
-                                onOpen("editChannel", { server, channel })
-                            }
+                            onClick={(e) => onAction(e, "editChannel")}
                             className="hidden h-4 w-4 text-zinc-500 transition hover:text-zinc-600 group-hover:block dark:text-zinc-400 dark:hover:text-zinc-300"
                         />
                     </ActionTooltip>
                     <ActionTooltip label={"delete"}>
                         <Trash
-                            onClick={() =>
-                                onOpen("deleteChannel", { server, channel })
-                            }
+                            onClick={(e) => onAction(e, "deleteChannel")}
                             className="hidden h-4 w-4 text-zinc-500 transition hover:text-zinc-600 group-hover:block dark:text-zinc-400 dark:hover:text-zinc-300"
                         />
                     </ActionTooltip>

@@ -4,6 +4,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { cn } from "@/lib/utils";
 import { ModalProvider } from "@/components/providers/modal-provider";
+import { SocketProvider } from "@/components/providers/socket-provider";
 const font = Open_Sans({ subsets: ["latin"] });
 
 export const metadata = {
@@ -18,15 +19,17 @@ export default function RootLayout({ children }) {
                 <body
                     className={cn(
                         font.className,
-                        "bg-white dark:bg-[#313338]"
+                        "h-screen bg-white dark:bg-[#313338]"
                     )}>
                     <ThemeProvider
                         attribute="class"
                         default="dark"
                         enableSystem={true}
                         storageKey="discord-thene">
-                        <ModalProvider />
-                        {children}
+                        <SocketProvider>
+                            <ModalProvider />
+                            {children}
+                        </SocketProvider>
                     </ThemeProvider>
                 </body>
             </html>
