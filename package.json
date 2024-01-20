@@ -35,8 +35,6 @@
         "date-fns": "^3.2.0",
         "dotenv": "^16.3.1",
         "emoji-mart": "^5.5.2",
-        "eslint": "^8.56.0",
-        "eslint-config-next": "^14.0.4",
         "livekit-client": "^1.15.9",
         "livekit-server-sdk": "^1.2.7",
         "lucide-react": "^0.302.0",
