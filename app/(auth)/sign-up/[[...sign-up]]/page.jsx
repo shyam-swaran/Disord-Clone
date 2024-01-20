@@ -1,5 +1,5 @@
-import { SignUp } from '@clerk/clerk-react'
+import { SignUp } from "@clerk/nextjs";
 
-function SignUpPage() {
-    return <SignUp />
+export default function Page() {
+    return <SignUp />;
 }

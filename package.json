@@ -9,7 +9,7 @@
         "lint": "next lint"
     },
     "dependencies": {
-        "@clerk/nextjs": "^4.29.1",
+        "@clerk/nextjs": "^4.23.2",
         "@emoji-mart/data": "^1.1.2",
         "@emoji-mart/react": "^1.1.1",
         "@hookform/resolvers": "^3.3.4",
@@ -47,6 +47,7 @@
         "react-hook-form": "^7.49.2",
         "socket.io": "^4.7.4",
         "socket.io-client": "^4.7.4",
+        "swr": "^2.2.4",
         "tailwind-merge": "^2.2.0",
         "tailwindcss-animate": "^1.0.7",
         "uploadthing": "^6.1.1",
